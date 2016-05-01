@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="expenseManagerApp">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Gestionnaire de dépenses</title>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="header clearfix">
+               <div class="col-lg-8">
+                <h3 class="text-muted">Gestionnaire de dépenses</h3>
+               </div>
+            </div>
+            <div class="jumbotron">
+                <h1>Gestionnaire de dépenses</h1>
+                <div ng-controller="expenseCtrl">
+                    <input placeholder="valeur" ng-model="newExpense" />
+                    <button ng-click="addExpense()">Ajouter une dépense</button>
+                    <ul class="expenses-list">
+                        <li ng-repeat="expense in expenses">
+                            {{ expense.value | number:2 }} € <a ng-click="removeExpense($index)"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                    <strong>Total des dépenses : {{total  | number:2 }} €</strong>
+                </div>
+            </div>
+            <footer class="footer">
+                <p class="text-muted">2016 - Gestionnaire de dépenses</p>
+            </footer>
+        </div>
+    </body>
+</html>
